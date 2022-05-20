@@ -10,8 +10,6 @@ import { tap } from "rxjs";
 export class ShuffleService {
   private _ranShuffle: Generator<Match, void, unknown> | undefined;
 
-  constructor(private translocoService: TranslocoService) {}
-
   create(matches?: Match[]) {
     if (!matches || matches.length === 0) {
       console.warn("Empty array", matches);
