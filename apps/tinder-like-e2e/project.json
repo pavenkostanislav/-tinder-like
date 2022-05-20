@@ -1,0 +1,33 @@
+{
+  "sourceRoot": "apps/tinder-like-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/tinder-like-e2e/cypress.json",
+        "devServerTarget": "tinder-like:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "tinder-like:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/tinder-like-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": [
+    "tinder-like"
+  ]
+}

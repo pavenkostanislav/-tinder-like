@@ -1,0 +1,49 @@
+<ng-container *transloco="let t; read: 'btn'">
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let item of items; let i = index">
+      <mat-card class="example-card">
+        <div *ngIf="item.like" class="cover"></div>
+        <mat-card-header>
+          <mat-card-title>{{ item.title }}</mat-card-title>
+          <mat-card-subtitle>{{ item.subtitle }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          [style.max-width.px]="480"
+          [style.max-height.px]="640"
+          [attr.src]="item.img.src"
+          [attr.alt]="item.img.alt"
+        />
+        <mat-card-content>
+          <p>{{ item.content }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-button
+            (click)="like(item)"
+            [disabled]="item.like ? 'disabled' : null"
+          >
+            {{ t('like') }}
+          </button>
+          <button
+            mat-button
+            (click)="swiping(i)"
+            *ngIf="!item.like"
+            [disabled]="item.like ? 'disabled' : null"
+          >
+            {{ t('dislike') }}
+          </button>
+          <button
+            mat-flat-button
+            *ngIf="item.like"
+            color="primary"
+            style="z-index: 1001"
+            (click)="swiping(i)"
+          >
+            {{ t('okay') }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-container>

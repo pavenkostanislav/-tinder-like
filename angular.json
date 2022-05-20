@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "tinder-like": "apps/tinder-like",
+    "tinder-like-e2e": "apps/tinder-like-e2e"
+  }
+}

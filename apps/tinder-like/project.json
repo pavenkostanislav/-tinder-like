@@ -1,0 +1,99 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/tinder-like/src",
+  "prefix": "tinder-like",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/tinder-like",
+        "index": "apps/tinder-like/src/index.html",
+        "main": "apps/tinder-like/src/main.ts",
+        "polyfills": "apps/tinder-like/src/polyfills.ts",
+        "tsConfig": "apps/tinder-like/tsconfig.app.json",
+        "assets": [
+          "apps/tinder-like/src/favicon.ico",
+          "apps/tinder-like/src/assets"
+        ],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/tinder-like/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/tinder-like/src/environments/environment.ts",
+              "with": "apps/tinder-like/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "tinder-like:build:production"
+        },
+        "development": {
+          "browserTarget": "tinder-like:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "tinder-like:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/tinder-like/**/*.ts",
+          "apps/tinder-like/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/tinder-like"
+      ],
+      "options": {
+        "jestConfig": "apps/tinder-like/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
