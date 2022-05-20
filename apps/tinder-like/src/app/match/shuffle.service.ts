@@ -8,13 +8,13 @@ import { Match } from './match.inerface';
 export class ShuffleService {
   private _ranShuffle: Generator<Match, void, unknown> | undefined;
 
-  create(matches: Match[]) {
+  create(matches?: Match[]) {
     if (!matches || matches.length === 0) {
       console.warn('Empty array', matches);
       return;
     }
 
-    this._ranShuffle = shuffle(matches);
+    this._ranShuffle = shuffle<Match>(matches);
   }
 
   next(): Match {

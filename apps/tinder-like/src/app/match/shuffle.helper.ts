@@ -4,7 +4,7 @@ export const getRandom = (max: number) => {
   return Math.floor(Math.random() * max);
 };
 
-export function* shuffle(array: Match[]) {
+export function* shuffle<T>(array: T[]) {
   let i = array.length;
 
   while (i--) {

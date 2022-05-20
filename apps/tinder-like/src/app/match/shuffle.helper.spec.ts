@@ -1,4 +1,4 @@
-import { getRandom } from './shuffle.helper';
+import { getRandom, shuffle } from './shuffle.helper';
 
 describe('getRandom helper', () => {
   it('expected 0 from random max 1', () => {
@@ -11,15 +11,17 @@ describe('getRandom helper', () => {
 });
 
 describe('shuffle helper', () => {
-  // it('matches even if received contains additional elements', () => {
-  //   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  //   const ranNumber = shuffle(array);
-  //   const expected: unknown[] = [];
-  //   array.forEach(() => {
-  //     const param = ranNumber.next().value;
-  //     expected.push(param);
-  //   });
-  //   expect(array.length).toBe(expected.length);
-  //   expect(array).toEqual(expect.arrayContaining(expected));
-  // });
+  it('matches even if received contains additional elements', () => {
+    const ranNumber = shuffle([1, 2, 3, 4, 5]);
+    const expected: number[] = [];
+    let param;
+    do {
+      param = ranNumber.next().value;
+      if(param) expected.push(param);
+    }
+    while(param);
+
+    expect(expected.length).toBe(5);
+    expect(expected).toEqual(expect.arrayContaining([1, 2, 3, 4, 5]));
+  });
 });
