@@ -10,7 +10,7 @@ Needs only the like-dislike part of the app -- registration, profiles, etc must 
 
 ### Requirements
 
-0. The client-backend communication contract must be provided by you in a readme file. 
+1. The client-backend communication contract must be provided by you in a readme file. 
 0. Angular material must be used 
 0. Errors and borderline cases must be taken into account 
 0. The test assignment must be production ready 
