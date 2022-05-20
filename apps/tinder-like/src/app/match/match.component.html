@@ -1,21 +1,27 @@
 <ng-container *transloco="let t; read: 'btn'">
   <mat-grid-list cols="2" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let item of items; let i = index">
-      <mat-card class="example-card">
+    <mat-grid-tile
+      *ngFor="let item of items; let i = index"
+      [style.height.px]="640"
+    >
+      <mat-card [style.max-width.px]="320">
         <div *ngIf="item.like" class="cover"></div>
         <mat-card-header>
           <mat-card-title>{{ item.title }}</mat-card-title>
           <mat-card-subtitle>{{ item.subtitle }}</mat-card-subtitle>
         </mat-card-header>
-        <img
-          mat-card-image
-          [style.max-width.px]="480"
-          [style.max-height.px]="640"
-          [attr.src]="item.img.src"
-          [attr.alt]="item.img.alt"
-        />
         <mat-card-content>
-          <p>{{ item.content }}</p>
+          <p class="scrollable-img">
+            <img
+              mat-card-image
+              [attr.src]="item.img.src"
+              [attr.alt]="item.img.alt"
+            />
+          </p>
+        </mat-card-content>
+
+        <mat-card-content>
+          <p class="scrollable">{{ item.content }}</p>
         </mat-card-content>
         <mat-card-actions>
           <button
@@ -23,7 +29,7 @@
             (click)="like(item)"
             [disabled]="item.like ? 'disabled' : null"
           >
-            {{ t('like') }}
+            {{ t("like") }}
           </button>
           <button
             mat-button
@@ -31,7 +37,7 @@
             *ngIf="!item.like"
             [disabled]="item.like ? 'disabled' : null"
           >
-            {{ t('dislike') }}
+            {{ t("dislike") }}
           </button>
           <button
             mat-flat-button
@@ -40,7 +46,7 @@
             style="z-index: 1001"
             (click)="swiping(i)"
           >
-            {{ t('okay') }}
+            {{ t("okay") }}
           </button>
         </mat-card-actions>
       </mat-card>
