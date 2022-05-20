@@ -10,7 +10,6 @@ import { ShuffleService } from './shuffle.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MatchComponent implements OnInit {
-  private matches: Match[] = [];
   items: Match[] = [];
 
   constructor(
@@ -22,19 +21,17 @@ export class MatchComponent implements OnInit {
     this.translocoService
       .selectTranslateObject<Matches>('matches')
       .subscribe((result) => {
-        this.matches = result;
-        this.shuffle.create(result);
-        this.items.push(this.shuffle.next());
-        this.items.push(this.shuffle.next());
+        this.loadItems(result);
       });
   }
 
-  like(match: Match) {
-    // const match: Match | undefined = this.matches.find((m) => m.id === id);
-    // if (!match) {
-    //   return;
-    // }
+  loadItems(result: Matches) {
+    this.shuffle.create(result);
+    this.items.push(this.shuffle.next());
+    this.items.push(this.shuffle.next());
+  }
 
+  like(match: Match) {
     match.like = true;
   }
 

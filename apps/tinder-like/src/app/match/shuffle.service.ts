@@ -1,16 +1,20 @@
-import { Injectable } from '@angular/core';
-import { shuffle } from './shuffle.helper';
-import { Match } from './match.inerface';
+import { Injectable } from "@angular/core";
+import { shuffle } from "./shuffle.helper";
+import { Match } from "./match.inerface";
+import { TranslocoService } from "@ngneat/transloco";
+import { tap } from "rxjs";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ShuffleService {
   private _ranShuffle: Generator<Match, void, unknown> | undefined;
 
+  constructor(private translocoService: TranslocoService) {}
+
   create(matches?: Match[]) {
     if (!matches || matches.length === 0) {
-      console.warn('Empty array', matches);
+      console.warn("Empty array", matches);
       return;
     }
 
@@ -19,7 +23,7 @@ export class ShuffleService {
 
   next(): Match {
     if (!this._ranShuffle) {
-      throw new Error('Need create shuffle array before using');
+      throw new Error("Need create shuffle array before using");
     }
 
     return this._ranShuffle.next().value as Match;
