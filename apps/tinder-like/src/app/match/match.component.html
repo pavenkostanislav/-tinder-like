@@ -5,7 +5,7 @@
       [style.height.px]="640"
     >
       <mat-card [style.max-width.px]="320">
-        <div *ngIf="item.like" class="cover"></div>
+        <div *ngIf="item && item.like" class="cover"></div>
         <mat-card-header>
           <mat-card-title>{{ item.title }}</mat-card-title>
           <mat-card-subtitle>{{ item.subtitle }}</mat-card-subtitle>
